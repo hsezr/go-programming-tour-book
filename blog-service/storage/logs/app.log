@@ -1,0 +1,2 @@
+2022/03/10 17:26:08 {"callers":["D:/Software/Golang/GoProject/src/go-programming-tour-book/blog-service/main.go: 23 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1646904368906688100}
+2022/03/10 19:51:36 {"callers":["D:/Software/Golang/GoProject/src/go-programming-tour-book/blog-service/main.go: 23 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1646913096547505400}
