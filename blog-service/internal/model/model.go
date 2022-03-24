@@ -10,6 +10,11 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
+const (
+	STATE_OPEN  = 1
+	STATE_CLOSE = 0
+)
+
 type Model struct {
 	ID         uint32 `gorm:"primary_key" json:"id"`
 	CreatedBy  string `json:"created_by"`
@@ -22,14 +27,14 @@ type Model struct {
 
 func NewDBEngine(databaseSetting *setting.DatabaseSettingS) (*gorm.DB, error) {
 	s := "%s:%s@tcp(%s)/%s?charset=%s&parseTime=%t&loc=Local"
-	db, err := gorm.Open(databaseSetting.DBType, fmt.Sprintf(s, 
+	db, err := gorm.Open(databaseSetting.DBType, fmt.Sprintf(s,
 		databaseSetting.UserName,
 		databaseSetting.Password,
 		databaseSetting.Host,
 		databaseSetting.DBName,
 		databaseSetting.Charset,
-		databaseSetting.ParseTime,))
-	
+		databaseSetting.ParseTime))
+
 	if err != nil {
 		return nil, err
 	}
@@ -66,7 +71,7 @@ func updateTimeStampForCreateCallBack(scope *gorm.Scope) {
 }
 
 func updateTimeStampForUpdateCallBack(scope *gorm.Scope) {
-	if _, ok := scope.Get("gorm:update_column"); !ok{
+	if _, ok := scope.Get("gorm:update_column"); !ok {
 		_ = scope.SetColumn("ModifiedOn", time.Now().Unix())
 	}
 }
