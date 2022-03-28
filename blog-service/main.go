@@ -48,7 +48,12 @@ func setupSetting() error {
 	if err != nil {
 		return err
 	}
+	err = setting.ReadSection("JWT", &global.JWTSetting)
+	if err != nil {
+		return err
+	}
 
+	global.JWTSetting.Expire *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
 
@@ -76,8 +81,6 @@ func setupLogger() error {
 	return nil
 }
 
-
-
 // @title 博客系统
 // @version 1.0
 // @description Go 语言编程之旅：一起用 Go 做项目
@@ -95,4 +98,3 @@ func main() {
 	fmt.Println(global.AppSetting)
 	s.ListenAndServe()
 }
-
