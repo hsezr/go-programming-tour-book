@@ -31,3 +31,13 @@ JWT:
   Secret: hsezr
   Issuer: blog-service
   Expire: 7200
+Email:
+  Host: smtp.qq.com
+  Port: 465
+  UserName: 449177962@qq.com
+  Password: fpgrludyuvrlcbai
+  IsSSL: true
+  From: 449177962@qq.com
+  To:
+    - hsezrhjw@sina.com
+    - 2842075864@qq.com
